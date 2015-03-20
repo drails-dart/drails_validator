@@ -1,0 +1,8 @@
+name: drails_validator
+version: 0.0.1
+author: Luis Vargas <luisvargastijerino@gmail.com>
+description: |
+  A library useful for applications or for sharing on pub.dartlang.org.
+homepage: https://github.com/luisvt/drails_validator
+dev_dependencies:
+  unittest: any
