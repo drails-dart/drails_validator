@@ -1,3 +1,5 @@
+library notNull_notEmpty_test;
+
 import 'package:unittest/unittest.dart';
 import 'package:drails_validator/drails_validator.dart';
 

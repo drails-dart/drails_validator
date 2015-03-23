@@ -57,11 +57,10 @@ bool isNotEmpty(value) => isNotNull(value) && value.isNotEmpty;
 const notEmpty = const NotEmpty();
 
 /// Annotation to check if the value is not Empty (null is treated as empty)
-class NotEmpty implements NotNull {
+class NotEmpty extends NotNull {
   final String customDescription;
   String get description => "Value should not be empty";
   IsValidFunction get isValid => isNotEmpty;
-  IsValidFunction2 get isValid2 => null;
   
   const NotEmpty({this.customDescription});
 }
@@ -80,10 +79,8 @@ class Min extends NotNull {
   final Comparable minVal;
   final bool isMinInclusive;
 
-  @override
   String get description => customDescription != null ? customDescription : "Value should be greater than $minVal";
 
-  @override
   IsValidFunction2 get isValid2 => isGreaterThanMin;
 }
 
@@ -94,7 +91,7 @@ bool isLowerThanMax(Comparable val, Max annotation) {
 }
 
 /// Specify that the attribute value should be lower than [maxVal] or lower or equal that [maxVal] if [isMaxInclusive] is true
-class Max implements NotNull {
+class Max extends NotNull {
   const Max(this.maxVal, {this.customDescription, this.isMaxInclusive: true});
   
   final String customDescription;
@@ -102,7 +99,6 @@ class Max implements NotNull {
   final bool isMaxInclusive;
 
   String get description => customDescription != null ? customDescription : "Value should be less than $maxVal";
-  IsValidFunction get isValid => null;
   IsValidFunction2 get isValid2 => isLowerThanMax;
 }
 
@@ -110,7 +106,7 @@ class Max implements NotNull {
 bool isInRange(Comparable value, Range annotation) => isGreaterThanMin(value, annotation) && isLowerThanMax(value, annotation);
 
 /// Specify that the attribute value should be between [minVal] and [maxVal]
-class Range implements Min, Max {
+class Range extends NotNull implements Min, Max {
   const Range(this.minVal, this.maxVal, {this.customDescription, this.isMaxInclusive: true, this.isMinInclusive: true});
 
   final String customDescription;
@@ -120,17 +116,17 @@ class Range implements Min, Max {
   final bool isMinInclusive;
   final bool isMaxInclusive;
   
-  IsValidFunction get isValid => null;
   IsValidFunction2 get isValid2 => isInRange;
 }
 
 /// checks if the [val] has length between min and max
 hasLength(String val, Length annotation) => 
-    isNotNull(val) &&
-    (annotation.min != null ? val.length >= annotation.min : true) && (annotation.max != null ? val.length <= annotation.max : true ); 
+    isNotNull(val)
+    && (annotation.min != null ? val.length >= annotation.min : true)
+    && (annotation.max != null ? val.length <= annotation.max : true ); 
 
 /// Annotation to check if the attribute has lenght between [min] and [max]
-class Length implements NotEmpty {
+class Length extends NotNull {
   const Length({this.min, this.max, this.customDescription});
 
   String get description => 
@@ -146,6 +142,5 @@ class Length implements NotEmpty {
   final int max;
   final int min;
 
-  IsValidFunction get isValid => null;
   IsValidFunction2 get isValid2 => hasLength;
 }

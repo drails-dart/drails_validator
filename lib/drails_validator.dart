@@ -9,5 +9,7 @@ library drails_validator;
 @MirrorsUsed(metaTargets: 'Validator')
 import 'dart:mirrors';
 
+import 'package:drails_commons/drails_commons.dart';
+
 part 'src/validator_base.dart';
 part 'src/annotations.dart';
