@@ -5,5 +5,6 @@ description: A library useful for applications or for sharing on pub.dartlang.or
 homepage: https://github.com/luisvt/drails_validator
 dependencies:
   drails_commons: '>=0.0.4 <0.0.5'
+  validator: '>=0.0.7 <0.0.9'
 dev_dependencies:
   unittest: any
