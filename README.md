@@ -53,7 +53,7 @@ main() {
         
   print('invalidPerson: ${validate(invalidPerson)}');
   print('validPerson: ${validate(validPerson)}');
-  \*
+  /*
   will print:
     invalidPerson: 
       isValid: false,
