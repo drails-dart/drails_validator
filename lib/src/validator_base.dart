@@ -6,6 +6,8 @@ class ValidationResult {
   Map<String, List<String>> errors = {};
   
   bool get isValid => errors.isEmpty;
+  
+  toString() => 'isValid: $isValid, errors: $errors';
 }
 
 /// validate the specified [entity] and returns a result of type [ValidationResult]
