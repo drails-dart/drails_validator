@@ -1,4 +1,7 @@
 # drails_validator
+
+[![Build Status](https://drone.io/github.com/luisvt/drails_validator/status.png)](https://drone.io/github.com/luisvt/drails_validator/latest)
+
 Library for validate models similar to JPA Bean validation. It provides a way to validate a dart object using constraints which we can use for validation. To check if the object is valid we need to invoke the function `validate` this one returns an Object of type `ValidationResult` which contains a map of errors for every attribute of the object, for example:
 
 ```dart
