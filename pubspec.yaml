@@ -3,7 +3,7 @@ version: 0.0.2
 author: Luis Vargas <luisvargastijerino@gmail.com>
 description: Library for validate models similar to JPA Bean validation.
 homepage: https://github.com/luisvt/drails_validator
-enviroment:
+environment:
   sdk: ">=1.8.0 <2.0.0"
 dependencies:
   validator: '>=0.0.7 <0.0.9'
