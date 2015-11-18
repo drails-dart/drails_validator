@@ -15,7 +15,7 @@ ValidationResult validate(entity) {
   //create a ValidationResult object
   var result = new ValidationResult();
   //reflect entity
-  var entityIm = reflect(entity);
+  InstanceMirror entityIm = validable.reflect(entity);
   //get the annotations over the entity InstanceMirror
   var aoi = new GetValuesOfAnnotations<ValidIf>().fromInstance(entityIm);
   //if the entity has annotations over its class
@@ -24,14 +24,13 @@ ValidationResult validate(entity) {
     aoi.forEach((entityAnnotation) {
       if(entityAnnotation != null && entityAnnotation.isValid != null && !entityAnnotation.isValid(entity)) {
         //TODO: chose a name for this error
-        result.errors
-            ..putIfAbsent('', () => new List<String>())
-            ..[''].add(entityAnnotation.description);
+        result.errors.putIfAbsent('', () => new List<String>());
+        result.errors[''].add(entityAnnotation.description);
       }
     });
   
   //for each attribute of the entity
-  var pvfc = getPublicVariablesFromClass(entityIm.type);
+  var pvfc = getPublicVariablesFromClass(entityIm.type, validable);
   if(pvfc != null)
     pvfc.forEach((declarationSymbol, declarationMirror) {
       //get annotations where annotation of type VaidIf
@@ -40,14 +39,13 @@ ValidationResult validate(entity) {
         //for each annotation
         aod.forEach((annotation) {
           // if the attribute value is not valid
-          if(annotation.isValid != null && !annotation.isValid(entityIm.getField(declarationSymbol).reflectee)
-              || annotation.isValid2 != null && !annotation.isValid2(entityIm.getField(declarationSymbol).reflectee, annotation)) {
+          if(annotation.isValid != null && !annotation.isValid(entityIm.invokeGetter(declarationSymbol))
+              || annotation.isValid2 != null && !annotation.isValid2(entityIm.invokeGetter(declarationSymbol), annotation)) {
             //get the attribute name
-            var declarationName = MirrorSystem.getName(declarationSymbol);
+            var declarationName = declarationSymbol;
             //and add the errors to the result.errors map
-            result.errors
-              ..putIfAbsent(declarationName, () => new List<String>())
-              ..[declarationName].add(annotation.description);
+            result.errors.putIfAbsent(declarationName, () => new List<String>());
+            result.errors[declarationName].add(annotation.description);
           }
         });
     });

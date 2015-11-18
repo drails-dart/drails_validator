@@ -1,20 +1,21 @@
 library min_max_range_test;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
+@validable
 class ObjectWithMin {
   @Min(10)
   int myInt;
 }
 
-
+@validable
 class ObjectWithMax {
   @Max(10)
   int myInt;
 }
 
-
+@validable
 class ObjectWithRange {
   @Range(1,10)
   int myInt;

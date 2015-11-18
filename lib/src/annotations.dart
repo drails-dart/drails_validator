@@ -1,5 +1,22 @@
 part of drails_validator;
 
+/// This annotation specifies the object can be validated
+class Validable extends Reflectable {
+  const Validable() : super(
+      typeAnnotationQuantifyCapability,
+      superclassQuantifyCapability,
+      invokingCapability,
+      declarationsCapability,
+      metadataCapability,
+      newInstanceCapability,
+      typeRelationsCapability,
+      typeCapability);
+}
+
+/// This annotation specifies the object can be validated
+const validable = const Validable();
+
+
 /// Type of function that should be implemented for validation
 typedef bool IsValidFunction(porpertyVal);
 
@@ -143,4 +160,21 @@ class Length extends NotNull {
   final int min;
 
   IsValidFunction2 get isValid2 => hasLength;
+}
+
+/// checks if the [val] matches the regular expression passed to [annotation]
+matches(String val, Matches annotation) =>isNotNull(val) && validator.matches(val, annotation.regExp);
+
+/// Annotation to check if the attribute matches the specified regular expression [regExp]
+class Matches extends NotNull {
+
+  const Matches(this.regExp, {this.customDescription});
+
+  String get description =>
+      customDescription ?? 'value should match $regExp';
+
+  final String customDescription;
+  final String regExp;
+
+  IsValidFunction2 get isValid2 => matches;
 }

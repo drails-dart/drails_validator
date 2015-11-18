@@ -1,6 +1,6 @@
 # drails_validator
 
-[![Build Status](https://drone.io/github.com/luisvt/drails_validator/status.png)](https://drone.io/github.com/luisvt/drails_validator/latest)
+[![Build Status](https://travis-ci.org/drails-dart/drails_validator.svg)](https://travis-ci.org/drails-dart/drails_validator.svg)
 
 Library for validate models similar to JPA Bean validation. It provides a way to validate a dart object using constraints which we can use for validation. To check if the object is valid we need to invoke the function `validate` this one returns an Object of type `ValidationResult` which contains a map of errors for every attribute of the object, for example:
 
@@ -14,12 +14,10 @@ import 'package:drails_validator/drails_validator.dart';
 bool lowerThanOrEqualNow(DateTime dateOfBirth) =>
   !dateOfBirth.isAfter(new DateTime.now());
 
-bool isSSN(String ssn) =>
-  validator.matches(ssn, r'\d\d\d-\d\d-\d\d\d\d');
-
 bool isEmail(String email) =>
     isNotNull(email) && validator.isEmail(email);
 
+@validable
 class Person {
   int id;
   
@@ -35,7 +33,7 @@ class Person {
   @ValidIf(lowerThanOrEqualNow, customDescription: 'Values after now are not allowed')
   DateTime dateOfBirth;
   
-  @ValidIf(isSSN, customDescription: 'The entered SSN is invalid')
+  @Matches(r'\d\d\d-\d\d-\d\d\d\d', customDescription: 'The entered SSN is invalid')
   String ssn;
 }
 

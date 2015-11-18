@@ -1,9 +1,9 @@
 library length_test;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
-
+@validable
 class ObjectWithLength {
   @Length(min: 2)
   String myStringWithMin;
