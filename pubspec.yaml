@@ -3,6 +3,8 @@ version: 0.0.2
 author: Luis Vargas <luisvargastijerino@gmail.com>
 description: A library useful for applications or for sharing on pub.dartlang.org.
 homepage: https://github.com/luisvt/drails_validator
+enviroment:
+  sdk: ">=1.8.0 <2.0.0"
 dependencies:
   validator: '>=0.0.7 <0.0.9'
   drails_commons: ^0.0.6
