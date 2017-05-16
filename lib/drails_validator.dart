@@ -6,9 +6,10 @@
 /// This is an awesome library. More dartdocs go here.
 library drails_validator;
 
-import 'package:drails_commons/drails_commons.dart';
-import 'package:reflectable/reflectable.dart';
+import 'package:dson/dson.dart';
 import 'package:validator/validator.dart' as validator;
+
+export 'package:dson/dson.dart';
 
 part 'src/validator_base.dart';
 part 'src/annotations.dart';

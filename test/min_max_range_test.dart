@@ -3,25 +3,29 @@ library min_max_range_test;
 import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
-@validable
-class ObjectWithMin {
+part 'min_max_range_test.g.dart';
+
+@serializable
+class ObjectWithMin extends _$ObjectWithMinSerializable {
   @Min(10)
   int myInt;
 }
 
-@validable
-class ObjectWithMax {
+@serializable
+class ObjectWithMax extends _$ObjectWithMaxSerializable {
   @Max(10)
   int myInt;
 }
 
-@validable
-class ObjectWithRange {
+@serializable
+class ObjectWithRange extends _$ObjectWithRangeSerializable {
   @Range(1,10)
   int myInt;
 }
 
 main() {
+  _initMirrors();
+
   group('Min ->', () {
     var o = new ObjectWithMin();
     var expected = {

@@ -1,4 +1,7 @@
-# Changelog
+## 0.1.0
+
+* migrate code to use [dson](https://pub.dartlang.org/packages/dson), [serializable](https://pub.dartlang.org/packages/serializable), and [built_mirrors](https://pub.dartlang.org/packages/built_mirrors)
+
 
 ## 0.0.2
 

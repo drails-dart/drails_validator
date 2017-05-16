@@ -1,14 +1,20 @@
+library matches_test;
+
 import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
-@validable
-class MatchesSsn {
+part 'matches_test.g.dart';
+
+@serializable
+class MatchesSsn extends _$MatchesSsnSerializable {
 
   @Matches(r'\d\d\d-\d\d-\d\d\d\d')
   String ssn;
 }
 
 main() {
+  _initMirrors();
+
   group('test Matches ->', () {
     var o = new MatchesSsn(),
         expected = {

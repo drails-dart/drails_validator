@@ -3,19 +3,23 @@ library notNull_notEmpty_test;
 import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
-@validable
-class ObjectWithNotNull {
+part 'notNull_notEmpty_test.g.dart';
+
+@serializable
+class ObjectWithNotNull extends _$ObjectWithNotNullSerializable {
   @notNull
   var aNotNull;
 }
 
-@validable
-class ObjectWithNotEmpty {
+@serializable
+class ObjectWithNotEmpty extends _$ObjectWithNotEmptySerializable {
   @notEmpty
   String str;
 }
 
 main() {
+  _initMirrors();
+
   group('NotNull ->', () {
 
     var o = new ObjectWithNotNull();

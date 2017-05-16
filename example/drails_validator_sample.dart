@@ -6,6 +6,8 @@ library Validator.example;
 import 'package:validator/validator.dart' as validator;
 import 'package:drails_validator/drails_validator.dart';
 
+part 'drails_validator_sample.g.dart';
+
 bool lowerThanOrEqualNow(DateTime dateOfBirth) =>
   !dateOfBirth.isAfter(new DateTime.now());
 
@@ -15,7 +17,8 @@ bool isSSN(String ssn) =>
 bool isEmail(String email) =>
     isNotNull(email) && validator.isEmail(email);
 
-class Person {
+@serializable
+class Person extends _$PersonSerializable {
   int id;
   
   @Length(min: 2)
@@ -35,6 +38,8 @@ class Person {
 }
 
 main() {
+  _initMirrors();
+
   var invalidPerson = new Person()
         ..id = 1
         ..firstName = ''

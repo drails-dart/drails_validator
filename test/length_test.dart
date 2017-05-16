@@ -3,8 +3,10 @@ library length_test;
 import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
 
-@validable
-class ObjectWithLength {
+part 'length_test.g.dart';
+
+@serializable
+class ObjectWithLength extends _$ObjectWithLengthSerializable {
   @Length(min: 2)
   String myStringWithMin;
 
@@ -16,6 +18,8 @@ class ObjectWithLength {
 }
 
 main() {
+  _initMirrors();
+
   group('Length ->', () {
     var o = new ObjectWithLength(),
         expected = {
