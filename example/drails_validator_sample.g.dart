@@ -24,12 +24,16 @@ abstract class _$PersonSerializable extends SerializableMap {
   String get email;
   DateTime get dateOfBirth;
   String get ssn;
+  int get fieldA;
+  int get fieldB;
   void set id(int v);
   void set firstName(String v);
   void set lastName(String v);
   void set email(String v);
   void set dateOfBirth(DateTime v);
   void set ssn(String v);
+  void set fieldA(int v);
+  void set fieldB(int v);
 
   operator [](Object key) {
     switch (key) {
@@ -45,6 +49,10 @@ abstract class _$PersonSerializable extends SerializableMap {
         return dateOfBirth;
       case 'ssn':
         return ssn;
+      case 'fieldA':
+        return fieldA;
+      case 'fieldB':
+        return fieldB;
     }
     throwFieldNotFoundException(key, 'Person');
   }
@@ -69,11 +77,17 @@ abstract class _$PersonSerializable extends SerializableMap {
       case 'ssn':
         ssn = value;
         return;
+      case 'fieldA':
+        fieldA = value;
+        return;
+      case 'fieldB':
+        fieldB = value;
+        return;
     }
     throwFieldNotFoundException(key, 'Person');
   }
 
-  get keys => PersonClassMirror.fields.keys;
+  Iterable<String> get keys => PersonClassMirror.fields.keys;
 }
 
 _Person__Constructor(params) => new Person();
@@ -81,29 +95,32 @@ _Person__Constructor(params) => new Person();
 const $$Person_fields_id = const DeclarationMirror(type: int);
 const $$Person_fields_firstName = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: 2, max: null, customDescription: null)
-    ]);
+    annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_lastName = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: 2, max: null, customDescription: null)
-    ]);
+    annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_email = const DeclarationMirror(
     type: String,
     annotations: const [
-      const ValidIf(isEmail, customDescription: r'The entered email is invalid')
+      const ValidIf(isEmail,
+          description: r'The entered email is invalid', iff: null)
     ]);
 const $$Person_fields_dateOfBirth =
     const DeclarationMirror(type: DateTime, annotations: const [
   const ValidIf(lowerThanOrEqualNow,
-      customDescription: r'Values after now are not allowed')
+      description: r'Values after now are not allowed', iff: null)
 ]);
-const $$Person_fields_ssn = const DeclarationMirror(
-    type: String,
-    annotations: const [
-      const ValidIf(isSSN, customDescription: r'The entered SSN is invalid')
-    ]);
+const $$Person_fields_ssn =
+    const DeclarationMirror(type: String, annotations: const [
+  const ValidIf(isSSN, description: r'The entered SSN is invalid', iff: null)
+]);
+const $$Person_fields_fieldA = const DeclarationMirror(type: int);
+const $$Person_fields_fieldB =
+    const DeclarationMirror(type: int, annotations: const [
+  const NotNull(
+      description: r'fieldB should not be null if fieldA is greater than 123',
+      iff: _fieldAGt123)
+]);
 
 const PersonClassMirror =
     const ClassMirror(name: 'Person', constructors: const {
@@ -114,19 +131,25 @@ const PersonClassMirror =
   'lastName': $$Person_fields_lastName,
   'email': $$Person_fields_email,
   'dateOfBirth': $$Person_fields_dateOfBirth,
-  'ssn': $$Person_fields_ssn
+  'ssn': $$Person_fields_ssn,
+  'fieldA': $$Person_fields_fieldA,
+  'fieldB': $$Person_fields_fieldB
 }, getters: const [
   'id',
   'firstName',
   'lastName',
   'email',
   'dateOfBirth',
-  'ssn'
+  'ssn',
+  'fieldA',
+  'fieldB'
 ], setters: const [
   'id',
   'firstName',
   'lastName',
   'email',
   'dateOfBirth',
-  'ssn'
+  'ssn',
+  'fieldA',
+  'fieldB'
 ]);

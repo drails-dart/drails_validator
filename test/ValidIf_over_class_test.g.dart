@@ -47,7 +47,8 @@ abstract class _$ObjectWithValidIfOverClassSerializable
     throwFieldNotFoundException(key, 'ObjectWithValidIfOverClass');
   }
 
-  get keys => ObjectWithValidIfOverClassClassMirror.fields.keys;
+  Iterable<String> get keys =>
+      ObjectWithValidIfOverClassClassMirror.fields.keys;
 }
 
 _ObjectWithValidIfOverClass__Constructor(params) =>
@@ -63,7 +64,7 @@ const ObjectWithValidIfOverClassClassMirror =
   '': const FunctionMirror(
       parameters: const {}, call: _ObjectWithValidIfOverClass__Constructor)
 }, annotations: const [
-  const ValidIf(_firstNameAndLastNameAreDifferent, customDescription: null)
+  const ValidIf(_firstNameAndLastNameAreDifferent, description: null, iff: null)
 ], fields: const {
   'firstName': $$ObjectWithValidIfOverClass_fields_firstName,
   'lastName': $$ObjectWithValidIfOverClass_fields_lastName

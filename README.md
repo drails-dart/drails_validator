@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drails-dart/drails_validator.svg)](https://travis-ci.org/drails-dart/drails_validator.svg)
 
-Library for validate models similar to JPA Bean validation. It provides a way to validate a dart object using constraints which we can use for validation.
- 
-To check if the object is valid we need to invoke the function `validate`. This one returns an Object of type `ValidationResult` which contains a map of errors for every attribute of the object, for example:
+Library for validate models similar to JPA Bean validation. It provides a way to validate a dart object using constraints which we can use for validation. To check if the object is valid we need to invoke the function `validate` this one returns an Object of type `ValidationResult` which contains a map of errors for every attribute of the object, for example:
 
 1. Create a new dart project
 
@@ -40,24 +38,31 @@ bool isSSN(String ssn) =>
 bool isEmail(String email) =>
     isNotNull(email) && validator.isEmail(email);
 
+_fieldAGt123(Person p) => p.fieldA != null && p.fieldA > 123;
+
 @serializable
 class Person extends _$PersonSerializable {
   int id;
-  
+
   @Length(min: 2)
   String firstName;
-  
+
   @Length(min: 2)
   String lastName;
-  
-  @ValidIf(isEmail, customDescription: 'The entered email is invalid')
+
+  @ValidIf(isEmail, description: 'The entered email is invalid')
   String email;
-  
-  @ValidIf(lowerThanOrEqualNow, customDescription: 'Values after now are not allowed')
+
+  @ValidIf(lowerThanOrEqualNow, description: 'Values after now are not allowed')
   DateTime dateOfBirth;
-  
-  @ValidIf(isSSN, customDescription: 'The entered SSN is invalid')
+
+  @ValidIf(isSSN, description: 'The entered SSN is invalid')
   String ssn;
+
+  int fieldA;
+
+  @NotNull(iff: _fieldAGt123, description: "fieldB should not be null if fieldA is greater than 123")
+  int fieldB;
 }
 
 main() {
@@ -80,7 +85,7 @@ main() {
   print('invalidPerson: ${validate(invalidPerson)}');
   print('validPerson: ${validate(validPerson)}');
 }
-  
+
 ```
 
 5. create a file in `tool` folder called `build.dart` and put next code on it:
@@ -130,12 +135,16 @@ abstract class _$PersonSerializable extends SerializableMap {
   String get email;
   DateTime get dateOfBirth;
   String get ssn;
+  int get fieldA;
+  int get fieldB;
   void set id(int v);
   void set firstName(String v);
   void set lastName(String v);
   void set email(String v);
   void set dateOfBirth(DateTime v);
   void set ssn(String v);
+  void set fieldA(int v);
+  void set fieldB(int v);
 
   operator [](Object key) {
     switch (key) {
@@ -151,6 +160,10 @@ abstract class _$PersonSerializable extends SerializableMap {
         return dateOfBirth;
       case 'ssn':
         return ssn;
+      case 'fieldA':
+        return fieldA;
+      case 'fieldB':
+        return fieldB;
     }
     throwFieldNotFoundException(key, 'Person');
   }
@@ -175,11 +188,17 @@ abstract class _$PersonSerializable extends SerializableMap {
       case 'ssn':
         ssn = value;
         return;
+      case 'fieldA':
+        fieldA = value;
+        return;
+      case 'fieldB':
+        fieldB = value;
+        return;
     }
     throwFieldNotFoundException(key, 'Person');
   }
 
-  get keys => PersonClassMirror.fields.keys;
+  Iterable<String> get keys => PersonClassMirror.fields.keys;
 }
 
 _Person__Constructor(params) => new Person();
@@ -187,29 +206,32 @@ _Person__Constructor(params) => new Person();
 const $$Person_fields_id = const DeclarationMirror(type: int);
 const $$Person_fields_firstName = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: 2, max: null, customDescription: null)
-    ]);
+    annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_lastName = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: 2, max: null, customDescription: null)
-    ]);
+    annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_email = const DeclarationMirror(
     type: String,
     annotations: const [
-      const ValidIf(isEmail, customDescription: r'The entered email is invalid')
+      const ValidIf(isEmail,
+          description: r'The entered email is invalid', iff: null)
     ]);
 const $$Person_fields_dateOfBirth =
     const DeclarationMirror(type: DateTime, annotations: const [
   const ValidIf(lowerThanOrEqualNow,
-      customDescription: r'Values after now are not allowed')
+      description: r'Values after now are not allowed', iff: null)
 ]);
-const $$Person_fields_ssn = const DeclarationMirror(
-    type: String,
-    annotations: const [
-      const ValidIf(isSSN, customDescription: r'The entered SSN is invalid')
-    ]);
+const $$Person_fields_ssn =
+    const DeclarationMirror(type: String, annotations: const [
+  const ValidIf(isSSN, description: r'The entered SSN is invalid', iff: null)
+]);
+const $$Person_fields_fieldA = const DeclarationMirror(type: int);
+const $$Person_fields_fieldB =
+    const DeclarationMirror(type: int, annotations: const [
+  const NotNull(
+      description: r'fieldB should not be null if fieldA is greater than 123',
+      iff: _fieldAGt123)
+]);
 
 const PersonClassMirror =
     const ClassMirror(name: 'Person', constructors: const {
@@ -220,21 +242,27 @@ const PersonClassMirror =
   'lastName': $$Person_fields_lastName,
   'email': $$Person_fields_email,
   'dateOfBirth': $$Person_fields_dateOfBirth,
-  'ssn': $$Person_fields_ssn
+  'ssn': $$Person_fields_ssn,
+  'fieldA': $$Person_fields_fieldA,
+  'fieldB': $$Person_fields_fieldB
 }, getters: const [
   'id',
   'firstName',
   'lastName',
   'email',
   'dateOfBirth',
-  'ssn'
+  'ssn',
+  'fieldA',
+  'fieldB'
 ], setters: const [
   'id',
   'firstName',
   'lastName',
   'email',
   'dateOfBirth',
-  'ssn'
+  'ssn',
+  'fieldA',
+  'fieldB'
 ]);
 
 ```

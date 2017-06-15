@@ -17,24 +17,31 @@ bool isSSN(String ssn) =>
 bool isEmail(String email) =>
     isNotNull(email) && validator.isEmail(email);
 
+_fieldAGt123(Person p) => p.fieldA != null && p.fieldA > 123;
+
 @serializable
 class Person extends _$PersonSerializable {
   int id;
-  
+
   @Length(min: 2)
   String firstName;
-  
+
   @Length(min: 2)
   String lastName;
-  
-  @ValidIf(isEmail, customDescription: 'The entered email is invalid')
+
+  @ValidIf(isEmail, description: 'The entered email is invalid')
   String email;
-  
-  @ValidIf(lowerThanOrEqualNow, customDescription: 'Values after now are not allowed')
+
+  @ValidIf(lowerThanOrEqualNow, description: 'Values after now are not allowed')
   DateTime dateOfBirth;
-  
-  @ValidIf(isSSN, customDescription: 'The entered SSN is invalid')
+
+  @ValidIf(isSSN, description: 'The entered SSN is invalid')
   String ssn;
+
+  int fieldA;
+
+  @NotNull(iff: _fieldAGt123, description: "fieldB should not be null if fieldA is greater than 123")
+  int fieldB;
 }
 
 main() {
@@ -57,4 +64,3 @@ main() {
   print('invalidPerson: ${validate(invalidPerson)}');
   print('validPerson: ${validate(validPerson)}');
 }
-  

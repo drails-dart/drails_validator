@@ -38,7 +38,7 @@ abstract class _$MatchesSsnSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'MatchesSsn');
   }
 
-  get keys => MatchesSsnClassMirror.fields.keys;
+  Iterable<String> get keys => MatchesSsnClassMirror.fields.keys;
 }
 
 _MatchesSsn__Constructor(params) => new MatchesSsn();
@@ -46,7 +46,7 @@ _MatchesSsn__Constructor(params) => new MatchesSsn();
 const $$MatchesSsn_fields_ssn = const DeclarationMirror(
     type: String,
     annotations: const [
-      const Matches(r'\d\d\d-\d\d-\d\d\d\d', customDescription: null)
+      const Matches(r'\d\d\d-\d\d-\d\d\d\d', description: null)
     ]);
 
 const MatchesSsnClassMirror =

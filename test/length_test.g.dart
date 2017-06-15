@@ -52,24 +52,20 @@ abstract class _$ObjectWithLengthSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'ObjectWithLength');
   }
 
-  get keys => ObjectWithLengthClassMirror.fields.keys;
+  Iterable<String> get keys => ObjectWithLengthClassMirror.fields.keys;
 }
 
 _ObjectWithLength__Constructor(params) => new ObjectWithLength();
 
 const $$ObjectWithLength_fields_myStringWithMin = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: 2, max: null, customDescription: null)
-    ]);
+    annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$ObjectWithLength_fields_myStringWithMax = const DeclarationMirror(
     type: String,
-    annotations: const [
-      const Length(min: null, max: 4, customDescription: null)
-    ]);
+    annotations: const [const Length(min: null, max: 4, description: null)]);
 const $$ObjectWithLength_fields_myStringWithMinAndMax = const DeclarationMirror(
     type: String,
-    annotations: const [const Length(min: 2, max: 4, customDescription: null)]);
+    annotations: const [const Length(min: 2, max: 4, description: null)]);
 
 const ObjectWithLengthClassMirror =
     const ClassMirror(name: 'ObjectWithLength', constructors: const {

@@ -1,3 +1,10 @@
+## 0.2.0
+
+* rename `customDescription` to `description` in annotations
+* rename `description` to `defaultDescription` in annotations
+* add `iff` method to annotations
+* add typedef `IfFunction` for `iff` method
+
 ## 0.1.0
 
 * migrate code to use [dson](https://pub.dartlang.org/packages/dson), [serializable](https://pub.dartlang.org/packages/serializable), and [built_mirrors](https://pub.dartlang.org/packages/built_mirrors)

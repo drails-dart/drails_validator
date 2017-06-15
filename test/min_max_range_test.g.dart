@@ -42,7 +42,7 @@ abstract class _$ObjectWithMinSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'ObjectWithMin');
   }
 
-  get keys => ObjectWithMinClassMirror.fields.keys;
+  Iterable<String> get keys => ObjectWithMinClassMirror.fields.keys;
 }
 
 _ObjectWithMin__Constructor(params) => new ObjectWithMin();
@@ -50,7 +50,7 @@ _ObjectWithMin__Constructor(params) => new ObjectWithMin();
 const $$ObjectWithMin_fields_myInt = const DeclarationMirror(
     type: int,
     annotations: const [
-      const Min(10, customDescription: null, isMinInclusive: true)
+      const Min(10, description: null, isMinInclusive: true)
     ]);
 
 const ObjectWithMinClassMirror =
@@ -91,7 +91,7 @@ abstract class _$ObjectWithMaxSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'ObjectWithMax');
   }
 
-  get keys => ObjectWithMaxClassMirror.fields.keys;
+  Iterable<String> get keys => ObjectWithMaxClassMirror.fields.keys;
 }
 
 _ObjectWithMax__Constructor(params) => new ObjectWithMax();
@@ -99,7 +99,7 @@ _ObjectWithMax__Constructor(params) => new ObjectWithMax();
 const $$ObjectWithMax_fields_myInt = const DeclarationMirror(
     type: int,
     annotations: const [
-      const Max(10, customDescription: null, isMaxInclusive: true)
+      const Max(10, description: null, isMaxInclusive: true)
     ]);
 
 const ObjectWithMaxClassMirror =
@@ -140,7 +140,7 @@ abstract class _$ObjectWithRangeSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'ObjectWithRange');
   }
 
-  get keys => ObjectWithRangeClassMirror.fields.keys;
+  Iterable<String> get keys => ObjectWithRangeClassMirror.fields.keys;
 }
 
 _ObjectWithRange__Constructor(params) => new ObjectWithRange();
@@ -148,7 +148,7 @@ _ObjectWithRange__Constructor(params) => new ObjectWithRange();
 const $$ObjectWithRange_fields_myInt =
     const DeclarationMirror(type: int, annotations: const [
   const Range(1, 10,
-      customDescription: null, isMaxInclusive: true, isMinInclusive: true)
+      description: null, isMaxInclusive: true, isMinInclusive: true)
 ]);
 
 const ObjectWithRangeClassMirror =

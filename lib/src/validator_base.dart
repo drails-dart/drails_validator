@@ -26,7 +26,7 @@ ValidationResult validate(SerializableMap entity) {
         //TODO: chose a name for this error
         result.errors
           ..putIfAbsent('', () => new List<String>())
-          ..[''].add(entityAnnotation.description);
+          ..[''].add(entityAnnotation.defaultDescription);
       }
     });
 
@@ -37,13 +37,15 @@ ValidationResult validate(SerializableMap entity) {
     if (aod != null)
       //for each annotation
       aod.forEach((ValidIf annotation) {
-        // if the attribute value is not valid
-        if (annotation.isValid != null && !annotation.isValid(entity[declarationName])
-            || annotation.isValid2 != null && !annotation.isValid2(entity[declarationName], annotation)) {
-          // and add the errors to the result.errors map
-          result.errors
-            ..putIfAbsent(declarationName, () => new List<String>())
-            ..[declarationName].add(annotation.description);
+        if(annotation.iff == null || annotation.iff(entity)){
+          // if the attribute value is not valid
+          if (annotation.isValid != null && !annotation.isValid(entity[declarationName])
+              || annotation.isValid2 != null && !annotation.isValid2(entity[declarationName], annotation)) {
+            // and add the errors to the result.errors map
+            result.errors
+              ..putIfAbsent(declarationName, () => new List<String>())
+              ..[declarationName].add(annotation.defaultDescription);
+          }
         }
       });
   });
