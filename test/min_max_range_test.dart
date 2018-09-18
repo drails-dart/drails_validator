@@ -19,7 +19,7 @@ class ObjectWithMax extends _$ObjectWithMaxSerializable {
 
 @serializable
 class ObjectWithRange extends _$ObjectWithRangeSerializable {
-  @Range(1,10)
+  @Range(1, 10)
   int myInt;
 }
 
@@ -48,7 +48,7 @@ main() {
       expect(validate(o..myInt = 11).errors, isEmpty);
     });
   });
-  
+
   group('Max ->', () {
     var oMax = new ObjectWithMax();
     var expected = {
@@ -93,7 +93,7 @@ main() {
     test('equals to min', () {
       expect(validate(o..myInt = 1).errors, isEmpty);
     });
-    
+
     test('less than min', () {
       expect(validate(o..myInt = 0).errors, equals(expected));
     });

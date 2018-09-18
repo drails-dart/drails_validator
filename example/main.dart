@@ -8,14 +8,11 @@ import 'package:drails_validator/drails_validator.dart';
 
 part 'main.g.dart';
 
-bool lowerThanOrEqualNow(DateTime dateOfBirth) =>
-  !dateOfBirth.isAfter(new DateTime.now());
+bool lowerThanOrEqualNow(DateTime dateOfBirth) => !dateOfBirth.isAfter(new DateTime.now());
 
-bool isSSN(String ssn) =>
-  validator.matches(ssn, r'\d\d\d-\d\d-\d\d\d\d');
+bool isSSN(String ssn) => validator.matches(ssn, r'\d\d\d-\d\d-\d\d\d\d');
 
-bool isEmail(String email) =>
-    isNotNull(email) && validator.isEmail(email);
+bool isEmail(String email) => isNotNull(email) && validator.isEmail(email);
 
 _fieldAGt123(Person p) => p.fieldA != null && p.fieldA > 123;
 

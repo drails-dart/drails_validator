@@ -31,7 +31,6 @@ main() {
   _initMirrors();
 
   group('NotNull ->', () {
-
     var o = new ObjectWithNotNull();
     var expected = {
       'aNotNull': ['Value should not be null']
@@ -51,7 +50,6 @@ main() {
   });
 
   group('NotNullIf ->', () {
-
     var o = new ObjectWithNotNullIf();
     var expected = {
       'fieldB': ['fieldB should not be null if fieldA is greater than 123']
@@ -70,12 +68,16 @@ main() {
     });
 
     test('fieldA = 124, fieldB = 1', () {
-      expect(validate(o..fieldA = 124..fieldB = 1).errors, isEmpty);
+      expect(
+          validate(o
+                ..fieldA = 124
+                ..fieldB = 1)
+              .errors,
+          isEmpty);
     });
   });
 
   group('NotEmpty ->', () {
-
     var o = new ObjectWithNotEmpty();
     var expected = {
       'str': ['Value should not be empty']

@@ -1,5 +1,5 @@
 name: drails_validator
-version: 1.0.0
+version: 1.0.0+1
 author: Luis Vargas <luisvargastijerino@gmail.com>
 description: Library for validate models similar to JPA Bean validation.
 homepage: https://github.com/luisvt/drails_validator

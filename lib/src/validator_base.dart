@@ -1,6 +1,5 @@
 part of drails_validator;
 
-
 /// This is the return result from [validate] function, it contains the [errors] and the [isValid] getter
 class ValidationResult {
   Map<String, List<String>> errors = {};
@@ -37,10 +36,10 @@ ValidationResult validate(SerializableMap entity) {
     if (aod != null)
       //for each annotation
       aod.forEach((annotation) {
-        if(annotation.iff == null || annotation.iff(entity)){
+        if (annotation.iff == null || annotation.iff(entity)) {
           // if the attribute value is not valid
-          if (annotation.isValid != null && !annotation.isValid(entity[declarationName])
-              || annotation.isValid2 != null && !annotation.isValid2(entity[declarationName], annotation)) {
+          if (annotation.isValid != null && !annotation.isValid(entity[declarationName]) ||
+              annotation.isValid2 != null && !annotation.isValid2(entity[declarationName], annotation)) {
             // and add the errors to the result.errors map
             result.errors
               ..putIfAbsent(declarationName, () => new List<String>())

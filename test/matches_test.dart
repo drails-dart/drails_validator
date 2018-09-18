@@ -7,7 +7,6 @@ part 'matches_test.g.dart';
 
 @serializable
 class MatchesSsn extends _$MatchesSsnSerializable {
-
   @Matches(r'\d\d\d-\d\d-\d\d\d\d')
   String ssn;
 }
@@ -18,8 +17,8 @@ main() {
   group('test Matches ->', () {
     var o = new MatchesSsn(),
         expected = {
-          'ssn': [r'value should match \d\d\d-\d\d-\d\d\d\d']
-        };
+      'ssn': [r'value should match \d\d\d-\d\d-\d\d\d\d']
+    };
 
     test('test empty ssn', () {
       expect(validate(o).errors, expected);
@@ -33,5 +32,4 @@ main() {
       expect(validate(o..ssn = '123-45-6789').errors, isEmpty);
     });
   });
-
 }

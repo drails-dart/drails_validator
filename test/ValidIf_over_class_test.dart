@@ -18,9 +18,18 @@ main() {
   _initMirrors();
 
   var o = new ObjectWithValidIfOverClass();
-  
+
   test('firstName and lastName equals', () {
-    expect(validate(o).errors, {'': ['']});
-    expect(validate(o..firstName = 'a'..lastName = 'a').errors, {'': ['']});
+    expect(validate(o).errors, {
+      '': ['']
+    });
+    expect(
+        validate(o
+              ..firstName = 'a'
+              ..lastName = 'a')
+            .errors,
+        {
+          '': ['']
+        });
   });
 }
