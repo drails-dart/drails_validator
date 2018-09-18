@@ -3,69 +3,32 @@
 part of notNull_notEmpty_test;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
-// Target: library notNull_notEmpty_test
-// **************************************************************************
-
-_initMirrors() {
-  initClassMirrors({
-    ObjectWithNotNull: ObjectWithNotNullClassMirror,
-    ObjectWithNotNullIf: ObjectWithNotNullIfClassMirror,
-    ObjectWithNotEmpty: ObjectWithNotEmptyClassMirror
-  });
-  initFunctionMirrors({});
-}
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class ObjectWithNotNull
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$ObjectWithNotNullSerializable extends SerializableMap {
   dynamic get aNotNull;
   void set aNotNull(dynamic v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'aNotNull':
         return aNotNull;
     }
-    throwFieldNotFoundException(key, 'ObjectWithNotNull');
+    throwFieldNotFoundException(__key, 'ObjectWithNotNull');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'aNotNull':
-        aNotNull = value;
+        aNotNull = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'ObjectWithNotNull');
+    throwFieldNotFoundException(__key, 'ObjectWithNotNull');
   }
 
   Iterable<String> get keys => ObjectWithNotNullClassMirror.fields.keys;
 }
-
-_ObjectWithNotNull__Constructor(params) => new ObjectWithNotNull();
-
-const $$ObjectWithNotNull_fields_aNotNull =
-    const DeclarationMirror(type: dynamic, annotations: const [notNull]);
-
-const ObjectWithNotNullClassMirror =
-    const ClassMirror(name: 'ObjectWithNotNull', constructors: const {
-  '': const FunctionMirror(
-      parameters: const {}, call: _ObjectWithNotNull__Constructor)
-}, fields: const {
-  'aNotNull': $$ObjectWithNotNull_fields_aNotNull
-}, getters: const [
-  'aNotNull'
-], setters: const [
-  'aNotNull'
-]);
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class ObjectWithNotNullIf
-// **************************************************************************
 
 abstract class _$ObjectWithNotNullIfSerializable extends SerializableMap {
   int get fieldA;
@@ -73,36 +36,87 @@ abstract class _$ObjectWithNotNullIfSerializable extends SerializableMap {
   void set fieldA(int v);
   void set fieldB(int v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'fieldA':
         return fieldA;
       case 'fieldB':
         return fieldB;
     }
-    throwFieldNotFoundException(key, 'ObjectWithNotNullIf');
+    throwFieldNotFoundException(__key, 'ObjectWithNotNullIf');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'fieldA':
-        fieldA = value;
+        fieldA = __value;
         return;
       case 'fieldB':
-        fieldB = value;
+        fieldB = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'ObjectWithNotNullIf');
+    throwFieldNotFoundException(__key, 'ObjectWithNotNullIf');
   }
 
   Iterable<String> get keys => ObjectWithNotNullIfClassMirror.fields.keys;
 }
 
-_ObjectWithNotNullIf__Constructor(params) => new ObjectWithNotNullIf();
+abstract class _$ObjectWithNotEmptySerializable extends SerializableMap {
+  String get str;
+  void set str(String v);
 
-const $$ObjectWithNotNullIf_fields_fieldA = const DeclarationMirror(type: int);
+  operator [](Object __key) {
+    switch (__key) {
+      case 'str':
+        return str;
+    }
+    throwFieldNotFoundException(__key, 'ObjectWithNotEmpty');
+  }
+
+  operator []=(Object __key, __value) {
+    switch (__key) {
+      case 'str':
+        str = __value;
+        return;
+    }
+    throwFieldNotFoundException(__key, 'ObjectWithNotEmpty');
+  }
+
+  Iterable<String> get keys => ObjectWithNotEmptyClassMirror.fields.keys;
+}
+
+// **************************************************************************
+// MirrorsGenerator
+// **************************************************************************
+
+_ObjectWithNotNull__Constructor([positionalParams, namedParams]) =>
+    new ObjectWithNotNull();
+
+const $$ObjectWithNotNull_fields_aNotNull = const DeclarationMirror(
+    name: 'aNotNull', type: dynamic, annotations: const [notNull]);
+
+const ObjectWithNotNullClassMirror = const ClassMirror(
+    name: 'ObjectWithNotNull',
+    constructors: const {
+      '': const FunctionMirror(name: '', $call: _ObjectWithNotNull__Constructor)
+    },
+    fields: const {
+      'aNotNull': $$ObjectWithNotNull_fields_aNotNull
+    },
+    getters: const [
+      'aNotNull'
+    ],
+    setters: const [
+      'aNotNull'
+    ]);
+
+_ObjectWithNotNullIf__Constructor([positionalParams, namedParams]) =>
+    new ObjectWithNotNullIf();
+
+const $$ObjectWithNotNullIf_fields_fieldA =
+    const DeclarationMirror(name: 'fieldA', type: int);
 const $$ObjectWithNotNullIf_fields_fieldB =
-    const DeclarationMirror(type: int, annotations: const [
+    const DeclarationMirror(name: 'fieldB', type: int, annotations: const [
   const NotNull(
       description: r'fieldB should not be null if fieldA is greater than 123',
       iff: _fieldAGt123)
@@ -110,8 +124,7 @@ const $$ObjectWithNotNullIf_fields_fieldB =
 
 const ObjectWithNotNullIfClassMirror =
     const ClassMirror(name: 'ObjectWithNotNullIf', constructors: const {
-  '': const FunctionMirror(
-      parameters: const {}, call: _ObjectWithNotNullIf__Constructor)
+  '': const FunctionMirror(name: '', $call: _ObjectWithNotNullIf__Constructor)
 }, fields: const {
   'fieldA': $$ObjectWithNotNullIf_fields_fieldA,
   'fieldB': $$ObjectWithNotNullIf_fields_fieldB
@@ -123,44 +136,15 @@ const ObjectWithNotNullIfClassMirror =
   'fieldB'
 ]);
 
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class ObjectWithNotEmpty
-// **************************************************************************
+_ObjectWithNotEmpty__Constructor([positionalParams, namedParams]) =>
+    new ObjectWithNotEmpty();
 
-abstract class _$ObjectWithNotEmptySerializable extends SerializableMap {
-  String get str;
-  void set str(String v);
-
-  operator [](Object key) {
-    switch (key) {
-      case 'str':
-        return str;
-    }
-    throwFieldNotFoundException(key, 'ObjectWithNotEmpty');
-  }
-
-  operator []=(Object key, value) {
-    switch (key) {
-      case 'str':
-        str = value;
-        return;
-    }
-    throwFieldNotFoundException(key, 'ObjectWithNotEmpty');
-  }
-
-  Iterable<String> get keys => ObjectWithNotEmptyClassMirror.fields.keys;
-}
-
-_ObjectWithNotEmpty__Constructor(params) => new ObjectWithNotEmpty();
-
-const $$ObjectWithNotEmpty_fields_str =
-    const DeclarationMirror(type: String, annotations: const [notEmpty]);
+const $$ObjectWithNotEmpty_fields_str = const DeclarationMirror(
+    name: 'str', type: String, annotations: const [notEmpty]);
 
 const ObjectWithNotEmptyClassMirror =
     const ClassMirror(name: 'ObjectWithNotEmpty', constructors: const {
-  '': const FunctionMirror(
-      parameters: const {}, call: _ObjectWithNotEmpty__Constructor)
+  '': const FunctionMirror(name: '', $call: _ObjectWithNotEmpty__Constructor)
 }, fields: const {
   'str': $$ObjectWithNotEmpty_fields_str
 }, getters: const [
@@ -168,3 +152,15 @@ const ObjectWithNotEmptyClassMirror =
 ], setters: const [
   'str'
 ]);
+
+// **************************************************************************
+// InitMirrorsGenerator
+// **************************************************************************
+
+_initMirrors() {
+  initClassMirrors({
+    ObjectWithNotNull: ObjectWithNotNullClassMirror,
+    ObjectWithNotNullIf: ObjectWithNotNullIfClassMirror,
+    ObjectWithNotEmpty: ObjectWithNotEmptyClassMirror
+  });
+}

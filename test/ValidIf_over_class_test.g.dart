@@ -3,19 +3,7 @@
 part of ValidIf_over_class;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
-// Target: library ValidIf_over_class
-// **************************************************************************
-
-_initMirrors() {
-  initClassMirrors(
-      {ObjectWithValidIfOverClass: ObjectWithValidIfOverClassClassMirror});
-  initFunctionMirrors({});
-}
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class ObjectWithValidIfOverClass
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$ObjectWithValidIfOverClassSerializable
@@ -25,44 +13,48 @@ abstract class _$ObjectWithValidIfOverClassSerializable
   void set firstName(String v);
   void set lastName(String v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'firstName':
         return firstName;
       case 'lastName':
         return lastName;
     }
-    throwFieldNotFoundException(key, 'ObjectWithValidIfOverClass');
+    throwFieldNotFoundException(__key, 'ObjectWithValidIfOverClass');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'firstName':
-        firstName = value;
+        firstName = __value;
         return;
       case 'lastName':
-        lastName = value;
+        lastName = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'ObjectWithValidIfOverClass');
+    throwFieldNotFoundException(__key, 'ObjectWithValidIfOverClass');
   }
 
   Iterable<String> get keys =>
       ObjectWithValidIfOverClassClassMirror.fields.keys;
 }
 
-_ObjectWithValidIfOverClass__Constructor(params) =>
+// **************************************************************************
+// MirrorsGenerator
+// **************************************************************************
+
+_ObjectWithValidIfOverClass__Constructor([positionalParams, namedParams]) =>
     new ObjectWithValidIfOverClass();
 
 const $$ObjectWithValidIfOverClass_fields_firstName =
-    const DeclarationMirror(type: String);
+    const DeclarationMirror(name: 'firstName', type: String);
 const $$ObjectWithValidIfOverClass_fields_lastName =
-    const DeclarationMirror(type: String);
+    const DeclarationMirror(name: 'lastName', type: String);
 
 const ObjectWithValidIfOverClassClassMirror =
     const ClassMirror(name: 'ObjectWithValidIfOverClass', constructors: const {
   '': const FunctionMirror(
-      parameters: const {}, call: _ObjectWithValidIfOverClass__Constructor)
+      name: '', $call: _ObjectWithValidIfOverClass__Constructor)
 }, annotations: const [
   const ValidIf(_firstNameAndLastNameAreDifferent, description: null, iff: null)
 ], fields: const {
@@ -75,3 +67,12 @@ const ObjectWithValidIfOverClassClassMirror =
   'firstName',
   'lastName'
 ]);
+
+// **************************************************************************
+// InitMirrorsGenerator
+// **************************************************************************
+
+_initMirrors() {
+  initClassMirrors(
+      {ObjectWithValidIfOverClass: ObjectWithValidIfOverClassClassMirror});
+}

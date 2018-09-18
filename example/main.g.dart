@@ -3,18 +3,7 @@
 part of Validator.example;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
-// Target: library Validator.example
-// **************************************************************************
-
-_initMirrors() {
-  initClassMirrors({Person: PersonClassMirror});
-  initFunctionMirrors({});
-}
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class Person
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$PersonSerializable extends SerializableMap {
@@ -35,8 +24,8 @@ abstract class _$PersonSerializable extends SerializableMap {
   void set fieldA(int v);
   void set fieldB(int v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'id':
         return id;
       case 'firstName':
@@ -54,69 +43,79 @@ abstract class _$PersonSerializable extends SerializableMap {
       case 'fieldB':
         return fieldB;
     }
-    throwFieldNotFoundException(key, 'Person');
+    throwFieldNotFoundException(__key, 'Person');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'id':
-        id = value;
+        id = __value;
         return;
       case 'firstName':
-        firstName = value;
+        firstName = __value;
         return;
       case 'lastName':
-        lastName = value;
+        lastName = __value;
         return;
       case 'email':
-        email = value;
+        email = __value;
         return;
       case 'dateOfBirth':
-        dateOfBirth = value;
+        dateOfBirth = fromSerializedDateTime(__value);
         return;
       case 'ssn':
-        ssn = value;
+        ssn = __value;
         return;
       case 'fieldA':
-        fieldA = value;
+        fieldA = __value;
         return;
       case 'fieldB':
-        fieldB = value;
+        fieldB = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'Person');
+    throwFieldNotFoundException(__key, 'Person');
   }
 
   Iterable<String> get keys => PersonClassMirror.fields.keys;
 }
 
-_Person__Constructor(params) => new Person();
+// **************************************************************************
+// MirrorsGenerator
+// **************************************************************************
 
-const $$Person_fields_id = const DeclarationMirror(type: int);
+_Person__Constructor([positionalParams, namedParams]) => new Person();
+
+const $$Person_fields_id = const DeclarationMirror(name: 'id', type: int);
 const $$Person_fields_firstName = const DeclarationMirror(
+    name: 'firstName',
     type: String,
     annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_lastName = const DeclarationMirror(
+    name: 'lastName',
     type: String,
     annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$Person_fields_email = const DeclarationMirror(
+    name: 'email',
     type: String,
     annotations: const [
       const ValidIf(isEmail,
           description: r'The entered email is invalid', iff: null)
     ]);
-const $$Person_fields_dateOfBirth =
-    const DeclarationMirror(type: DateTime, annotations: const [
-  const ValidIf(lowerThanOrEqualNow,
-      description: r'Values after now are not allowed', iff: null)
-]);
+const $$Person_fields_dateOfBirth = const DeclarationMirror(
+    name: 'dateOfBirth',
+    type: DateTime,
+    annotations: const [
+      const ValidIf(lowerThanOrEqualNow,
+          description: r'Values after now are not allowed', iff: null)
+    ]);
 const $$Person_fields_ssn =
-    const DeclarationMirror(type: String, annotations: const [
+    const DeclarationMirror(name: 'ssn', type: String, annotations: const [
   const ValidIf(isSSN, description: r'The entered SSN is invalid', iff: null)
 ]);
-const $$Person_fields_fieldA = const DeclarationMirror(type: int);
+const $$Person_fields_fieldA =
+    const DeclarationMirror(name: 'fieldA', type: int);
 const $$Person_fields_fieldB =
-    const DeclarationMirror(type: int, annotations: const [
+    const DeclarationMirror(name: 'fieldB', type: int, annotations: const [
   const NotNull(
       description: r'fieldB should not be null if fieldA is greater than 123',
       iff: _fieldAGt123)
@@ -124,7 +123,7 @@ const $$Person_fields_fieldB =
 
 const PersonClassMirror =
     const ClassMirror(name: 'Person', constructors: const {
-  '': const FunctionMirror(parameters: const {}, call: _Person__Constructor)
+  '': const FunctionMirror(name: '', $call: _Person__Constructor)
 }, fields: const {
   'id': $$Person_fields_id,
   'firstName': $$Person_fields_firstName,
@@ -153,3 +152,11 @@ const PersonClassMirror =
   'fieldA',
   'fieldB'
 ]);
+
+// **************************************************************************
+// InitMirrorsGenerator
+// **************************************************************************
+
+_initMirrors() {
+  initClassMirrors({Person: PersonClassMirror});
+}

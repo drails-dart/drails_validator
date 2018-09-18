@@ -3,59 +3,65 @@
 part of matches_test;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
-// Target: library matches_test
-// **************************************************************************
-
-_initMirrors() {
-  initClassMirrors({MatchesSsn: MatchesSsnClassMirror});
-  initFunctionMirrors({});
-}
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class MatchesSsn
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$MatchesSsnSerializable extends SerializableMap {
   String get ssn;
   void set ssn(String v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'ssn':
         return ssn;
     }
-    throwFieldNotFoundException(key, 'MatchesSsn');
+    throwFieldNotFoundException(__key, 'MatchesSsn');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'ssn':
-        ssn = value;
+        ssn = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'MatchesSsn');
+    throwFieldNotFoundException(__key, 'MatchesSsn');
   }
 
   Iterable<String> get keys => MatchesSsnClassMirror.fields.keys;
 }
 
-_MatchesSsn__Constructor(params) => new MatchesSsn();
+// **************************************************************************
+// MirrorsGenerator
+// **************************************************************************
+
+_MatchesSsn__Constructor([positionalParams, namedParams]) => new MatchesSsn();
 
 const $$MatchesSsn_fields_ssn = const DeclarationMirror(
+    name: 'ssn',
     type: String,
     annotations: const [
       const Matches(r'\d\d\d-\d\d-\d\d\d\d', description: null)
     ]);
 
-const MatchesSsnClassMirror =
-    const ClassMirror(name: 'MatchesSsn', constructors: const {
-  '': const FunctionMirror(parameters: const {}, call: _MatchesSsn__Constructor)
-}, fields: const {
-  'ssn': $$MatchesSsn_fields_ssn
-}, getters: const [
-  'ssn'
-], setters: const [
-  'ssn'
-]);
+const MatchesSsnClassMirror = const ClassMirror(
+    name: 'MatchesSsn',
+    constructors: const {
+      '': const FunctionMirror(name: '', $call: _MatchesSsn__Constructor)
+    },
+    fields: const {
+      'ssn': $$MatchesSsn_fields_ssn
+    },
+    getters: const [
+      'ssn'
+    ],
+    setters: const [
+      'ssn'
+    ]);
+
+// **************************************************************************
+// InitMirrorsGenerator
+// **************************************************************************
+
+_initMirrors() {
+  initClassMirrors({MatchesSsn: MatchesSsnClassMirror});
+}

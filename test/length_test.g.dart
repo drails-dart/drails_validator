@@ -3,18 +3,7 @@
 part of length_test;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
-// Target: library length_test
-// **************************************************************************
-
-_initMirrors() {
-  initClassMirrors({ObjectWithLength: ObjectWithLengthClassMirror});
-  initFunctionMirrors({});
-}
-
-// **************************************************************************
-// Generator: DsonGenerator
-// Target: class ObjectWithLength
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$ObjectWithLengthSerializable extends SerializableMap {
@@ -25,8 +14,8 @@ abstract class _$ObjectWithLengthSerializable extends SerializableMap {
   void set myStringWithMax(String v);
   void set myStringWithMinAndMax(String v);
 
-  operator [](Object key) {
-    switch (key) {
+  operator [](Object __key) {
+    switch (__key) {
       case 'myStringWithMin':
         return myStringWithMin;
       case 'myStringWithMax':
@@ -34,43 +23,50 @@ abstract class _$ObjectWithLengthSerializable extends SerializableMap {
       case 'myStringWithMinAndMax':
         return myStringWithMinAndMax;
     }
-    throwFieldNotFoundException(key, 'ObjectWithLength');
+    throwFieldNotFoundException(__key, 'ObjectWithLength');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
+  operator []=(Object __key, __value) {
+    switch (__key) {
       case 'myStringWithMin':
-        myStringWithMin = value;
+        myStringWithMin = __value;
         return;
       case 'myStringWithMax':
-        myStringWithMax = value;
+        myStringWithMax = __value;
         return;
       case 'myStringWithMinAndMax':
-        myStringWithMinAndMax = value;
+        myStringWithMinAndMax = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'ObjectWithLength');
+    throwFieldNotFoundException(__key, 'ObjectWithLength');
   }
 
   Iterable<String> get keys => ObjectWithLengthClassMirror.fields.keys;
 }
 
-_ObjectWithLength__Constructor(params) => new ObjectWithLength();
+// **************************************************************************
+// MirrorsGenerator
+// **************************************************************************
+
+_ObjectWithLength__Constructor([positionalParams, namedParams]) =>
+    new ObjectWithLength();
 
 const $$ObjectWithLength_fields_myStringWithMin = const DeclarationMirror(
+    name: 'myStringWithMin',
     type: String,
     annotations: const [const Length(min: 2, max: null, description: null)]);
 const $$ObjectWithLength_fields_myStringWithMax = const DeclarationMirror(
+    name: 'myStringWithMax',
     type: String,
     annotations: const [const Length(min: null, max: 4, description: null)]);
 const $$ObjectWithLength_fields_myStringWithMinAndMax = const DeclarationMirror(
+    name: 'myStringWithMinAndMax',
     type: String,
     annotations: const [const Length(min: 2, max: 4, description: null)]);
 
 const ObjectWithLengthClassMirror =
     const ClassMirror(name: 'ObjectWithLength', constructors: const {
-  '': const FunctionMirror(
-      parameters: const {}, call: _ObjectWithLength__Constructor)
+  '': const FunctionMirror(name: '', $call: _ObjectWithLength__Constructor)
 }, fields: const {
   'myStringWithMin': $$ObjectWithLength_fields_myStringWithMin,
   'myStringWithMax': $$ObjectWithLength_fields_myStringWithMax,
@@ -84,3 +80,11 @@ const ObjectWithLengthClassMirror =
   'myStringWithMax',
   'myStringWithMinAndMax'
 ]);
+
+// **************************************************************************
+// InitMirrorsGenerator
+// **************************************************************************
+
+_initMirrors() {
+  initClassMirrors({ObjectWithLength: ObjectWithLengthClassMirror});
+}

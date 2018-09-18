@@ -17,11 +17,11 @@ ValidationResult validate(SerializableMap entity) {
   //reflect entity
   var entityCm = reflect(entity);
   // get the annotations over the entity InstanceMirror
-  var aoi = entityCm.annotations?.where((a) => a is ValidIf);
+  var aoi = entityCm.annotations?.where((a) => a is ValidIf)?.cast<ValidIf>();
   //if the entity has annotations over its class
   if (aoi != null)
     //for each annotation over the class of the entity
-    aoi.forEach((ValidIf entityAnnotation) {
+    aoi.forEach((entityAnnotation) {
       if (entityAnnotation != null && entityAnnotation.isValid != null && !entityAnnotation.isValid(entity)) {
         //TODO: chose a name for this error
         result.errors
@@ -32,11 +32,11 @@ ValidationResult validate(SerializableMap entity) {
 
   //for each attribute of the entity
   entityCm.fields.forEach((declarationName, declarationMirror) {
-    //get annotations where annotation is type ValidIf
-    var aod = declarationMirror.annotations?.where((a) => a is ValidIf);
+    //get annotations of declarations where annotation is type ValidIf
+    var aod = declarationMirror.annotations?.where((a) => a is ValidIf)?.cast<ValidIf>();
     if (aod != null)
       //for each annotation
-      aod.forEach((ValidIf annotation) {
+      aod.forEach((annotation) {
         if(annotation.iff == null || annotation.iff(entity)){
           // if the attribute value is not valid
           if (annotation.isValid != null && !annotation.isValid(entity[declarationName])

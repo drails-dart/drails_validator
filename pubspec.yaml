@@ -1,18 +1,19 @@
 name: drails_validator
-version: 0.2.0
+version: 1.0.0
 author: Luis Vargas <luisvargastijerino@gmail.com>
 description: Library for validate models similar to JPA Bean validation.
 homepage: https://github.com/luisvt/drails_validator
 environment:
-  sdk: ">=1.8.0 <2.0.0"
+  sdk: ">=2.0.0 <3.0.0"
 dependencies:
-  validator: '>=0.0.7 <0.0.9'
-  dson: ^0.6.0
+  validators: ^1.0.0
+  dson: ^0.15.0
 #  built_mirrors:
 #    path: ../built_mirrors
 #dependency_overrides:
 #  built_mirrors:
 #    path: ../built_mirrors
 dev_dependencies:
-  test: any
+  test: ^1.3.3
   build_runner: any
+  build_test: any

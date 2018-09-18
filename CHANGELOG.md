@@ -1,3 +1,7 @@
+## 1.0.0
+
+- upgrade dart sdk to `2.0.0`
+
 ## 0.2.0
 
 * rename `customDescription` to `description` in annotations

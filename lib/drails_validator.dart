@@ -7,7 +7,7 @@
 library drails_validator;
 
 import 'package:dson/dson.dart';
-import 'package:validator/validator.dart' as validator;
+import 'package:validators/validators.dart' as validator;
 
 export 'package:dson/dson.dart';
 

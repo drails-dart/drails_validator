@@ -7,7 +7,7 @@ typedef bool IsValidFunction(porpertyVal);
 typedef bool IsValidFunction2(porpertyVal, ValidIf annotation);
 
 /// Type of function that should be implemented to check an if condition for the entity
-typedef bool IfFunction(entity);
+typedef bool IffFunction(entity);
 
 /// Checks if the object or attribute accomplish the isValid function, for example:
 ///
@@ -30,8 +30,12 @@ class ValidIf extends Annotation {
 
   final String description;
   String get defaultDescription => description != null ? description : "";
-  final IsValidFunction isValid;
-  final IsValidFunction2 isValid2 = null;
+
+  /// type: [IsValidFunction]
+  final Function/*IsValidFunction*/ isValid;
+
+  /// type: [IsValidFunction2]
+  final Function/*IsValidFunction*/ isValid2 = null;
 
   /// If the [iff] function is not null, it is checked before checking the validity of the field, for example:
   ///
@@ -57,7 +61,9 @@ class ValidIf extends Annotation {
   ///
   ///       print(validate(o..equalsTo5 = 5).isValid); //will print true
   ///     }
-  final IfFunction iff;
+  ///
+  /// type: [IffFunction]
+  final Function/*IffFunction*/ iff;
 }
 
 /// checks if the value is not null
@@ -78,7 +84,9 @@ class NotNull implements ValidIf {
 
   @override
   IsValidFunction get isValid => isNotNull;
-  IsValidFunction2 get isValid2 => null;
+
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => null;
 
 
   /// If the [iff] function is not null, it is checked before checking the validity of the field, for example:
@@ -103,7 +111,9 @@ class NotNull implements ValidIf {
   ///
   ///       print(validate(o..notNullVal = 5).isValid); //will print true
   ///     }
-  final Function iff;
+  ///
+  /// type: [IffFunction]
+  final Function/*IfFunction*/ iff;
 }
 
 /// Checks if the [value] is not empty (null is treated as empty)
@@ -137,7 +147,8 @@ class Min extends NotNull {
 
   String get defaultDescription => description != null ? description : "Value should be greater than $minVal";
 
-  IsValidFunction2 get isValid2 => isGreaterThanMin;
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => isGreaterThanMin;
 }
 
 bool isLowerThanMax(Comparable val, Max annotation) {
@@ -155,7 +166,9 @@ class Max extends NotNull {
   final bool isMaxInclusive;
 
   String get defaultDescription => description != null ? description : "Value should be less than $maxVal";
-  IsValidFunction2 get isValid2 => isLowerThanMax;
+
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => isLowerThanMax;
 }
 
 /// checks if [value] is in range
@@ -172,7 +185,8 @@ class Range extends NotNull implements Min, Max {
   final bool isMinInclusive;
   final bool isMaxInclusive;
 
-  IsValidFunction2 get isValid2 => isInRange;
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => isInRange;
 }
 
 /// checks if the [val] has length between min and max
@@ -198,7 +212,8 @@ class Length extends NotNull {
   final int max;
   final int min;
 
-  IsValidFunction2 get isValid2 => hasLength;
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => hasLength;
 }
 
 /// checks if the [val] matches the regular expression passed to [annotation]
@@ -216,5 +231,6 @@ class Matches extends NotNull {
   final String description;
   final String regExp;
 
-  IsValidFunction2 get isValid2 => matches;
+  /// type: [IsValidFunction2]
+  Function/*IsValidFunction2*/ get isValid2 => matches;
 }

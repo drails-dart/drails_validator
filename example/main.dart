@@ -3,10 +3,10 @@
 
 library Validator.example;
 
-import 'package:validator/validator.dart' as validator;
+import 'package:validators/validators.dart' as validator;
 import 'package:drails_validator/drails_validator.dart';
 
-part 'drails_validator_sample.g.dart';
+part 'main.g.dart';
 
 bool lowerThanOrEqualNow(DateTime dateOfBirth) =>
   !dateOfBirth.isAfter(new DateTime.now());
