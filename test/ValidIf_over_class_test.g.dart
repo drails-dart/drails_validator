@@ -56,7 +56,8 @@ const ObjectWithValidIfOverClassClassMirror =
   '': const FunctionMirror(
       name: '', $call: _ObjectWithValidIfOverClass__Constructor)
 }, annotations: const [
-  const ValidIf(_firstNameAndLastNameAreDifferent, description: null, iff: null)
+  const ValidIf(_firstNameAndLastNameAreDifferent,
+      description: _firstNameAndLastNameShouldBeDifferentMessage, iff: null)
 ], fields: const {
   'firstName': $$ObjectWithValidIfOverClass_fields_firstName,
   'lastName': $$ObjectWithValidIfOverClass_fields_lastName

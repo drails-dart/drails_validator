@@ -54,15 +54,21 @@ _ObjectWithLength__Constructor([positionalParams, namedParams]) =>
 const $$ObjectWithLength_fields_myStringWithMin = const DeclarationMirror(
     name: 'myStringWithMin',
     type: String,
-    annotations: const [const Length(min: 2, max: null, description: null)]);
+    annotations: const [
+      const Length(min: 2, max: null, description: lengthShouldBeBetweenMessage)
+    ]);
 const $$ObjectWithLength_fields_myStringWithMax = const DeclarationMirror(
     name: 'myStringWithMax',
     type: String,
-    annotations: const [const Length(min: null, max: 4, description: null)]);
+    annotations: const [
+      const Length(min: null, max: 4, description: lengthShouldBeBetweenMessage)
+    ]);
 const $$ObjectWithLength_fields_myStringWithMinAndMax = const DeclarationMirror(
     name: 'myStringWithMinAndMax',
     type: String,
-    annotations: const [const Length(min: 2, max: 4, description: null)]);
+    annotations: const [
+      const Length(min: 2, max: 4, description: lengthShouldBeBetweenMessage)
+    ]);
 
 const ObjectWithLengthClassMirror =
     const ClassMirror(name: 'ObjectWithLength', constructors: const {

@@ -1,3 +1,7 @@
+## 2.0.0
+
+- support translations
+
 ## 1.0.0
 
 - upgrade dart sdk to `2.0.0`

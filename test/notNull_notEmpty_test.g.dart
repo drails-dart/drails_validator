@@ -115,12 +115,12 @@ _ObjectWithNotNullIf__Constructor([positionalParams, namedParams]) =>
 
 const $$ObjectWithNotNullIf_fields_fieldA =
     const DeclarationMirror(name: 'fieldA', type: int);
-const $$ObjectWithNotNullIf_fields_fieldB =
-    const DeclarationMirror(name: 'fieldB', type: int, annotations: const [
-  const NotNull(
-      description: r'fieldB should not be null if fieldA is greater than 123',
-      iff: _fieldAGt123)
-]);
+const $$ObjectWithNotNullIf_fields_fieldB = const DeclarationMirror(
+    name: 'fieldB',
+    type: int,
+    annotations: const [
+      const NotNull(description: fieldBNotNullIfFieldAGt123, iff: _fieldAGt123)
+    ]);
 
 const ObjectWithNotNullIfClassMirror =
     const ClassMirror(name: 'ObjectWithNotNullIf', constructors: const {

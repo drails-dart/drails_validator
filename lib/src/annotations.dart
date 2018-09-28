@@ -26,10 +26,9 @@ typedef bool IffFunction(entity);
 ///       print(validate(o..equalsTo5 = 5).isValid); //will print true
 ///     }
 class ValidIf extends Annotation {
-  const ValidIf(this.isValid, {this.description, this.iff});
+  const ValidIf(this.isValid, {this.description = valueIsInvalidMessage, this.iff});
 
-  final String description;
-  String get defaultDescription => description != null ? description : "";
+  final Function description;
 
   /// type: [IsValidFunction]
   final Function /*IsValidFunction*/ isValid;
@@ -74,13 +73,10 @@ const notNull = const NotNull();
 
 /// annotation to check if the attribute is not null
 class NotNull implements ValidIf {
-  const NotNull({this.description, this.iff});
+  const NotNull({this.description: valueShouldNotBeNullMessage, this.iff});
 
   /// custom description to display if the attribute is null
-  final String description;
-
-  @override
-  String get defaultDescription => description != null ? description : "Value should not be null";
+  final Function description;
 
   @override
   IsValidFunction get isValid => isNotNull;
@@ -123,11 +119,10 @@ const notEmpty = const NotEmpty();
 
 /// Annotation to check if the value is not Empty (null is treated as empty)
 class NotEmpty extends NotNull {
-  final String description;
-  String get defaultDescription => "Value should not be empty";
+  final Function description;
   IsValidFunction get isValid => isNotEmpty;
 
-  const NotEmpty({this.description});
+  const NotEmpty({this.description = valueShouldNotBeEmptyMessage});
 }
 
 /// chekcs if the [value] is greater than
@@ -138,13 +133,11 @@ bool isGreaterThanMin(Comparable value, Min me) {
 }
 
 class Min extends NotNull {
-  const Min(this.minVal, {this.description, this.isMinInclusive: true});
+  const Min(this.minVal, {this.description = valueShouldBeGreaterThanMessage, this.isMinInclusive: true});
 
-  final String description;
+  final Function description;
   final Comparable minVal;
   final bool isMinInclusive;
-
-  String get defaultDescription => description != null ? description : "Value should be greater than $minVal";
 
   /// type: [IsValidFunction2]
   Function /*IsValidFunction2*/ get isValid2 => isGreaterThanMin;
@@ -158,13 +151,11 @@ bool isLowerThanMax(Comparable val, Max annotation) {
 
 /// Specify that the attribute value should be lower than [maxVal] or lower or equal that [maxVal] if [isMaxInclusive] is true
 class Max extends NotNull {
-  const Max(this.maxVal, {this.description, this.isMaxInclusive: true});
+  const Max(this.maxVal, {this.description = valueShouldBeLessThanMessage, this.isMaxInclusive: true});
 
-  final String description;
+  final Function description;
   final Comparable maxVal;
   final bool isMaxInclusive;
-
-  String get defaultDescription => description != null ? description : "Value should be less than $maxVal";
 
   /// type: [IsValidFunction2]
   Function /*IsValidFunction2*/ get isValid2 => isLowerThanMax;
@@ -176,10 +167,9 @@ bool isInRange(Comparable value, Range annotation) =>
 
 /// Specify that the attribute value should be between [minVal] and [maxVal]
 class Range extends NotNull implements Min, Max {
-  const Range(this.minVal, this.maxVal, {this.description, this.isMaxInclusive: true, this.isMinInclusive: true});
+  const Range(this.minVal, this.maxVal, {this.description = valueShouldBeBetweenMessage, this.isMaxInclusive: true, this.isMinInclusive: true});
 
-  final String description;
-  String get defaultDescription => description != null ? description : "Value should be between $minVal and $maxVal";
+  final Function description;
   final Comparable minVal;
   final Comparable maxVal;
   final bool isMinInclusive;
@@ -197,15 +187,9 @@ hasLength(String val, Length annotation) =>
 
 /// Annotation to check if the attribute has lenght between [min] and [max]
 class Length extends NotNull {
-  const Length({this.min, this.max, this.description});
+  const Length({this.min, this.max, this.description = lengthShouldBeBetweenMessage});
 
-  String get defaultDescription => description != null
-      ? description
-      : min == null
-          ? "Length should be Lower than $max"
-          : max == null ? "Length should be greather than $min" : "Length should be between $min and $max";
-
-  final String description;
+  final Function description;
   final int max;
   final int min;
 
@@ -218,11 +202,9 @@ matches(String val, Matches annotation) => isNotNull(val) && validator.matches(v
 
 /// Annotation to check if the attribute matches the specified regular expression [regExp]
 class Matches extends NotNull {
-  const Matches(this.regExp, {this.description});
+  const Matches(this.regExp, {this.description = valueShouldMatchMessage});
 
-  String get defaultDescription => description ?? 'value should match $regExp';
-
-  final String description;
+  final Function description;
   final String regExp;
 
   /// type: [IsValidFunction2]

@@ -19,4 +19,5 @@ pubspec.lock
 *.iml
 .pub/
 .project
-/.dart_tool/
+.dart_tool/
+/_README.xml

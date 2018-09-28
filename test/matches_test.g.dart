@@ -36,12 +36,10 @@ abstract class _$MatchesSsnSerializable extends SerializableMap {
 
 _MatchesSsn__Constructor([positionalParams, namedParams]) => new MatchesSsn();
 
-const $$MatchesSsn_fields_ssn = const DeclarationMirror(
-    name: 'ssn',
-    type: String,
-    annotations: const [
-      const Matches(r'\d\d\d-\d\d-\d\d\d\d', description: null)
-    ]);
+const $$MatchesSsn_fields_ssn =
+    const DeclarationMirror(name: 'ssn', type: String, annotations: const [
+  const Matches(r'\d\d\d-\d\d-\d\d\d\d', description: valueShouldMatchMessage)
+]);
 
 const MatchesSsnClassMirror = const ClassMirror(
     name: 'MatchesSsn',

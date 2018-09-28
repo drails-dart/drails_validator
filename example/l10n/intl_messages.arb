@@ -1,0 +1,89 @@
+{
+   "@@last_modified": "2018-09-28T13:31:49.116556",
+   "enteredEmailInvalidMessage": "The entered email is invalid",
+   "@enteredEmailInvalidMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "valueAfterNowAreNotAllowedMessage": "Values after now are not allowed",
+   "@valueAfterNowAreNotAllowedMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "enteredSSNInvalidMessage": "The entered SSN is invalid",
+   "@enteredSSNInvalidMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "fieldBShouldNotBeNullIfFieldAGt123Message": "fieldB should not be null if fieldA is greater than 123",
+   "@fieldBShouldNotBeNullIfFieldAGt123Message": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "valueIsInvalidMessage": "Value is invalid",
+   "@valueIsInvalidMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "valueShouldNotBeNullMessage": "Value should not be null",
+   "@valueShouldNotBeNullMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "valueShouldNotBeEmptyMessage": "Value should not be empty",
+   "@valueShouldNotBeEmptyMessage": {
+      "type": "text",
+      "placeholders": {}
+   },
+   "_valueShouldBeGreaterThanMessage": "Value should be greater than {minVal}",
+   "@_valueShouldBeGreaterThanMessage": {
+      "type": "text",
+      "placeholders": {
+         "minVal": {}
+      }
+   },
+   "_valueShouldBeLessThanMessage": "Value should be less than {maxVal}",
+   "@_valueShouldBeLessThanMessage": {
+      "type": "text",
+      "placeholders": {
+         "maxVal": {}
+      }
+   },
+   "_valueShouldBeBetweenMessage": "Value should be between {minVal} and {maxVal}",
+   "@_valueShouldBeBetweenMessage": {
+      "type": "text",
+      "placeholders": {
+         "minVal": {},
+         "maxVal": {}
+      }
+   },
+   "_lengthShouldBeBetweenMessage": "Length should be between {min} and {max}",
+   "@_lengthShouldBeBetweenMessage": {
+      "type": "text",
+      "placeholders": {
+         "min": {},
+         "max": {}
+      }
+   },
+   "_lengthShouldBeGreaterThanMessage": "Length should be greater than {min}",
+   "@_lengthShouldBeGreaterThanMessage": {
+      "type": "text",
+      "placeholders": {
+         "min": {}
+      }
+   },
+   "_lengthShouldBeLessThanMessage": "Length should be less than {max}",
+   "@_lengthShouldBeLessThanMessage": {
+      "type": "text",
+      "placeholders": {
+         "max": {}
+      }
+   },
+   "_valueShouldMatchMessage": "value should match {regExp}",
+   "@_valueShouldMatchMessage": {
+      "type": "text",
+      "placeholders": {
+         "regExp": {}
+      }
+   }
+}

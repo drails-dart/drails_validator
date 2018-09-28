@@ -1,0 +1,88 @@
+{
+  "enteredEmailInvalidMessage": "El correo electrónico introducido no es válido",
+  "@enteredEmailInvalidMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "valueAfterNowAreNotAllowedMessage": "Los valores después de ahora no están permitidos.",
+  "@valueAfterNowAreNotAllowedMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enteredSSNInvalidMessage": "El SSN ingresado no es válido",
+  "@enteredSSNInvalidMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "fieldBShouldNotBeNullIfFieldAGt123Message": "fieldB no debe ser nulo si fieldA es mayor que 123",
+  "@fieldBShouldNotBeNullIfFieldAGt123Message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "valueIsInvalidMessage": "El valor es inválido",
+  "@valueIsInvalidMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "valueShouldNotBeNullMessage": "El valor no debe ser nulo",
+  "@valueShouldNotBeNullMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "valueShouldNotBeEmptyMessage": "El valor no debe estar vacío",
+  "@valueShouldNotBeEmptyMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "_valueShouldBeGreaterThanMessage": "El valor debe ser mayor que {minVal}",
+  "@_valueShouldBeGreaterThanMessage": {
+    "type": "text",
+    "placeholders": {
+      "minVal": {}
+    }
+  },
+  "_valueShouldBeLessThanMessage": "El valor debe ser menor que {maxVal}",
+  "@_valueShouldBeLessThanMessage": {
+    "type": "text",
+    "placeholders": {
+      "maxVal": {}
+    }
+  },
+  "_valueShouldBeBetweenMessage": "El valor debe estar entre {minVal} y {maxVal}",
+  "@_valueShouldBeBetweenMessage": {
+    "type": "text",
+    "placeholders": {
+      "minVal": {},
+      "maxVal": {}
+    }
+  },
+  "_lengthShouldBeBetweenMessage": "La longitud debe estar entre {min} y {max}",
+  "@_lengthShouldBeBetweenMessage": {
+    "type": "text",
+    "placeholders": {
+      "min": {},
+      "max": {}
+    }
+  },
+  "_lengthShouldBeGreaterThanMessage": "La longitud debe ser mayor que {min}",
+  "@_lengthShouldBeGreaterThanMessage": {
+    "type": "text",
+    "placeholders": {
+      "min": {}
+    }
+  },
+  "_lengthShouldBeLessThanMessage": "La longitud debe ser menor que {max}",
+  "@_lengthShouldBeLessThanMessage": {
+    "type": "text",
+    "placeholders": {
+      "max": {}
+    }
+  },
+  "_valueShouldMatchMessage": "el valor debe coincidir con {regExp}",
+  "@_valueShouldMatchMessage": {
+    "type": "text",
+    "placeholders": {
+      "regExp": {}
+    }
+  }
+}

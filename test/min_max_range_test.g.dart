@@ -85,12 +85,11 @@ abstract class _$ObjectWithRangeSerializable extends SerializableMap {
 _ObjectWithMin__Constructor([positionalParams, namedParams]) =>
     new ObjectWithMin();
 
-const $$ObjectWithMin_fields_myInt = const DeclarationMirror(
-    name: 'myInt',
-    type: int,
-    annotations: const [
-      const Min(10, description: null, isMinInclusive: true)
-    ]);
+const $$ObjectWithMin_fields_myInt =
+    const DeclarationMirror(name: 'myInt', type: int, annotations: const [
+  const Min(10,
+      description: valueShouldBeGreaterThanMessage, isMinInclusive: true)
+]);
 
 const ObjectWithMinClassMirror = const ClassMirror(
     name: 'ObjectWithMin',
@@ -110,12 +109,10 @@ const ObjectWithMinClassMirror = const ClassMirror(
 _ObjectWithMax__Constructor([positionalParams, namedParams]) =>
     new ObjectWithMax();
 
-const $$ObjectWithMax_fields_myInt = const DeclarationMirror(
-    name: 'myInt',
-    type: int,
-    annotations: const [
-      const Max(10, description: null, isMaxInclusive: true)
-    ]);
+const $$ObjectWithMax_fields_myInt =
+    const DeclarationMirror(name: 'myInt', type: int, annotations: const [
+  const Max(10, description: valueShouldBeLessThanMessage, isMaxInclusive: true)
+]);
 
 const ObjectWithMaxClassMirror = const ClassMirror(
     name: 'ObjectWithMax',
@@ -138,7 +135,9 @@ _ObjectWithRange__Constructor([positionalParams, namedParams]) =>
 const $$ObjectWithRange_fields_myInt =
     const DeclarationMirror(name: 'myInt', type: int, annotations: const [
   const Range(1, 10,
-      description: null, isMaxInclusive: true, isMinInclusive: true)
+      description: valueShouldBeBetweenMessage,
+      isMaxInclusive: true,
+      isMinInclusive: true)
 ]);
 
 const ObjectWithRangeClassMirror = const ClassMirror(

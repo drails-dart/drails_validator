@@ -23,8 +23,8 @@ main() {
   group('Length ->', () {
     var o = new ObjectWithLength(),
         expected = {
-      'myStringWithMin': ['Length should be greather than 2'],
-      'myStringWithMax': ['Length should be Lower than 4'],
+      'myStringWithMin': ['Length should be greater than 2'],
+      'myStringWithMax': ['Length should be less than 4'],
       'myStringWithMinAndMax': ['Length should be between 2 and 4']
     };
 

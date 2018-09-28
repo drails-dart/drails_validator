@@ -1,7 +1,8 @@
 library notNull_notEmpty_test;
 
-import 'package:test/test.dart';
 import 'package:drails_validator/drails_validator.dart';
+import 'package:intl/intl.dart';
+import 'package:test/test.dart';
 
 part 'notNull_notEmpty_test.g.dart';
 
@@ -13,11 +14,14 @@ class ObjectWithNotNull extends _$ObjectWithNotNullSerializable {
 
 _fieldAGt123(ObjectWithNotNullIf ownni) => ownni.fieldA != null && ownni.fieldA > 123;
 
+String fieldBNotNullIfFieldAGt123() =>
+    Intl.message("fieldB should not be null if fieldA is greater than 123", name: 'fieldBNotNullIfFieldAGt123');
+
 @serializable
 class ObjectWithNotNullIf extends _$ObjectWithNotNullIfSerializable {
   int fieldA;
 
-  @NotNull(iff: _fieldAGt123, description: "fieldB should not be null if fieldA is greater than 123")
+  @NotNull(iff: _fieldAGt123, description: fieldBNotNullIfFieldAGt123)
   int fieldB;
 }
 

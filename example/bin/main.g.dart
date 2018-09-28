@@ -89,36 +89,40 @@ const $$Person_fields_id = const DeclarationMirror(name: 'id', type: int);
 const $$Person_fields_firstName = const DeclarationMirror(
     name: 'firstName',
     type: String,
-    annotations: const [const Length(min: 2, max: null, description: null)]);
+    annotations: const [
+      const Length(min: 2, max: null, description: lengthShouldBeBetweenMessage)
+    ]);
 const $$Person_fields_lastName = const DeclarationMirror(
     name: 'lastName',
     type: String,
-    annotations: const [const Length(min: 2, max: null, description: null)]);
+    annotations: const [
+      const Length(min: 2, max: null, description: lengthShouldBeBetweenMessage)
+    ]);
 const $$Person_fields_email = const DeclarationMirror(
     name: 'email',
     type: String,
     annotations: const [
-      const ValidIf(isEmail,
-          description: r'The entered email is invalid', iff: null)
+      const ValidIf(isEmail, description: enteredEmailInvalidMessage, iff: null)
     ]);
 const $$Person_fields_dateOfBirth = const DeclarationMirror(
     name: 'dateOfBirth',
     type: DateTime,
     annotations: const [
       const ValidIf(lowerThanOrEqualNow,
-          description: r'Values after now are not allowed', iff: null)
+          description: valueAfterNowAreNotAllowedMessage, iff: null)
     ]);
-const $$Person_fields_ssn =
-    const DeclarationMirror(name: 'ssn', type: String, annotations: const [
-  const ValidIf(isSSN, description: r'The entered SSN is invalid', iff: null)
-]);
+const $$Person_fields_ssn = const DeclarationMirror(
+    name: 'ssn',
+    type: String,
+    annotations: const [
+      const ValidIf(isSSN, description: enteredSSNInvalidMessage, iff: null)
+    ]);
 const $$Person_fields_fieldA =
     const DeclarationMirror(name: 'fieldA', type: int);
 const $$Person_fields_fieldB =
     const DeclarationMirror(name: 'fieldB', type: int, annotations: const [
   const NotNull(
-      description: r'fieldB should not be null if fieldA is greater than 123',
-      iff: _fieldAGt123)
+      description: fieldBShouldNotBeNullIfFieldAGt123Message, iff: _fieldAGt123)
 ]);
 
 const PersonClassMirror =

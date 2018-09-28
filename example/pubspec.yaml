@@ -1,0 +1,10 @@
+name: drails_validator_example
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+dependencies:
+  drails_validator:
+    path: ../
+dev_dependencies:
+  # tag::build-runner[]
+  build_runner: any
+  # end::build-runner[]

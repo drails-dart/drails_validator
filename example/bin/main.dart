@@ -3,10 +3,23 @@
 
 library Validator.example;
 
+// tag::import-messages[]
+import 'package:drails_validator_example/_l10n/messages_all.dart';
+// end::import-messages[]
+import 'package:intl/intl.dart';
 import 'package:validators/validators.dart' as validator;
 import 'package:drails_validator/drails_validator.dart';
 
 part 'main.g.dart';
+
+enteredEmailInvalidMessage() =>
+    Intl.message('The entered email is invalid', name: 'enteredEmailInvalidMessage');
+
+valueAfterNowAreNotAllowedMessage() => Intl.message('Values after now are not allowed', name: 'valueAfterNowAreNotAllowedMessage');
+
+enteredSSNInvalidMessage() => Intl.message('The entered SSN is invalid', name: 'enteredSSNInvalidMessage');
+
+fieldBShouldNotBeNullIfFieldAGt123Message() => Intl.message("fieldB should not be null if fieldA is greater than 123", name: 'fieldBShouldNotBeNullIfFieldAGt123Message');
 
 bool lowerThanOrEqualNow(DateTime dateOfBirth) => !dateOfBirth.isAfter(new DateTime.now());
 
@@ -26,23 +39,28 @@ class Person extends _$PersonSerializable {
   @Length(min: 2)
   String lastName;
 
-  @ValidIf(isEmail, description: 'The entered email is invalid')
+  @ValidIf(isEmail, description: enteredEmailInvalidMessage)
   String email;
 
-  @ValidIf(lowerThanOrEqualNow, description: 'Values after now are not allowed')
+  @ValidIf(lowerThanOrEqualNow, description: valueAfterNowAreNotAllowedMessage)
   DateTime dateOfBirth;
 
-  @ValidIf(isSSN, description: 'The entered SSN is invalid')
+  @ValidIf(isSSN, description: enteredSSNInvalidMessage)
   String ssn;
 
   int fieldA;
 
-  @NotNull(iff: _fieldAGt123, description: "fieldB should not be null if fieldA is greater than 123")
+  @NotNull(iff: _fieldAGt123, description: fieldBShouldNotBeNullIfFieldAGt123Message)
   int fieldB;
 }
 
-main() {
+main() async {
   _initMirrors();
+
+  // tag::set-locale[]
+  Intl.defaultLocale = 'es';
+  await initializeMessages('es');
+  // end::set-locale[]
 
   var invalidPerson = new Person()
         ..id = 1

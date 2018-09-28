@@ -8,8 +8,10 @@ library drails_validator;
 
 import 'package:dson/dson.dart';
 import 'package:validators/validators.dart' as validator;
+import 'package:intl/intl.dart';
 
 export 'package:dson/dson.dart';
 
 part 'src/validator_base.dart';
 part 'src/annotations.dart';
+part 'src/messages.dart';
